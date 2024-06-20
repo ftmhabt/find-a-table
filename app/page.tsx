@@ -1,5 +1,10 @@
-export default function page() {
+import '../styles/globals.css';
+import Header from "./ui/general/header";
+
+export default function Page() {
   return (
-    <div>page</div>
+    <div>
+        <Header/>
+    </div>
   )
 }
