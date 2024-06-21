@@ -1,9 +1,10 @@
-import Searchbar from "../ui/search/searchbar";
+import Hero from "../ui/general/hero";
+import Search from "../ui/general/search";
 
-export default function Page() {
+export default function SearchPage() {
   return (
-    <div>
-        <Searchbar/>
-    </div>
-  )
+    <Hero heightInPixel="50">
+      <Search />
+    </Hero>
+  );
 }
