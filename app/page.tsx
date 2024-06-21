@@ -5,7 +5,6 @@ import Hero from './ui/index/hero';
 export default function Page() {
   return (
     <div>
-        <Header/>
         <Hero/>
     </div>
   )

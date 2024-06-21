@@ -1,4 +1,4 @@
-import Search from "./search";
+import Search from "../general/search";
 
 export default function Hero() {
   return (

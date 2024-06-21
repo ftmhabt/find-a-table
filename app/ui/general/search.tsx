@@ -1,5 +1,5 @@
 'use client';
-import Button from "../general/button";
+import Button from "./button";
 
 export default function Search() {
   return (
