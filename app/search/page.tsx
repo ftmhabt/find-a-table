@@ -3,7 +3,7 @@ import Search from "../ui/general/search";
 
 export default function SearchPage() {
   return (
-    <Hero heightInPixel="50">
+    <Hero  heightClass="h-[50px]">
       <Search />
     </Hero>
   );
