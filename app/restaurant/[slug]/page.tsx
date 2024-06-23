@@ -5,9 +5,6 @@ import RestaurantDetailsCard from "../../ui/restaurant/restaurant-card";
 export default function restaurantDatails() {
   return (
     <div>
-      <Hero heightClass="h-[300px]">
-        <h1>restaurant name</h1>
-      </Hero>
       <RestaurantDetailsCard
         name="rest"
         description="kdfhjdshafeiwahlw"
