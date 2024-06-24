@@ -1,5 +1,6 @@
 import { Cuisine, Location, PRICE } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface RestaurantType {
   id:Number;
@@ -14,6 +15,7 @@ export interface RestaurantType {
 export default function Card({restaurant}:{restaurant:RestaurantType}) {
   return (
     <div className="w-[200px] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
+      <Link href={`restaurant/${restaurant.slug}`}>
       <img
         src={restaurant.main_image}
         height={120}
@@ -28,6 +30,7 @@ export default function Card({restaurant}:{restaurant:RestaurantType}) {
         </div>
         <div>booked 3 times today</div>
       </div>
+      </Link>
     </div>
   );
 }
