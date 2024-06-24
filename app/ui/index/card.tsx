@@ -2,12 +2,13 @@ import { Cuisine, Location, PRICE } from "@prisma/client";
 import Image from "next/image";
 
 export interface RestaurantType {
-  id:Number,
-  name:string,
-  main_image:string,
-  cuisine:Cuisine,
-  location:Location,
-  price:PRICE
+  id:Number;
+  name:string;
+  main_image:string;
+  cuisine:Cuisine;
+  location:Location;
+  price:PRICE;
+  slug:string;
 }
 
 export default function Card({restaurant}:{restaurant:RestaurantType}) {
