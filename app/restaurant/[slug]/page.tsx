@@ -43,9 +43,6 @@ export default async function restaurantDatails({
   const resaurant = await fetchRestaurantBySlug(params.slug);
   return (
     <div>
-    <Hero heightClass="h-[300px]">
-      <h1>{resaurant.name}</h1>
-    </Hero>
       <RestaurantDetailsCard
         description={resaurant.description}
         photos={resaurant.images.map((image) => image)}
