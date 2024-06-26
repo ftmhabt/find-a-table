@@ -12,9 +12,6 @@ export default function RestaurantLayout({
 }) {
   return (
     <>
-      <Hero heightClass="h-[300px]">
-        <h1>restaurant name</h1>
-      </Hero>
       {children}
     </>
   );
