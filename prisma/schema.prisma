@@ -17,7 +17,7 @@ model Restaurant {
   id          Int      @id @default(autoincrement())
   name        String
   description String
-  slug        String
+  slug        String   @unique
   main_image  String
   open_time   String
   close_time  String
