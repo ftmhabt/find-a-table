@@ -46,6 +46,7 @@ export default async function restaurantDatails({
       <RestaurantDetailsCard
         description={resaurant.description}
         photos={resaurant.images.map((image) => image)}
+        slug={params.slug}
       />
       <ReserveCard />
     </div>

@@ -1,16 +1,18 @@
 import Image from "next/image";
-import MenuBar from "./restaurant-bar";
+import RestaurantBar from "./restaurant-bar";
 
 export default function RestaurantDetailsCard({
   description,
   photos,
+  slug,
 }: {
   description: string;
   photos: string[];
+  slug: string;
 }) {
   return (
     <div className="max-w-[500px] bg-slate-200 -mt-10 ml-10">
-      <MenuBar/>
+      <RestaurantBar slug={slug} />
       <p>{description}</p>
       {photos.map((photo) => (
         <Image

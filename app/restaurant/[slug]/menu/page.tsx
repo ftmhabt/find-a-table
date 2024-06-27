@@ -27,7 +27,7 @@ export default async function restaurantMenu({
   const items = await fetchRestaurantMenu(params.slug);
   return (
     <div>
-      <MenuCard menu={items} />
+      <MenuCard menu={items} slug={params.slug}/>
     </div>
   );
 }
