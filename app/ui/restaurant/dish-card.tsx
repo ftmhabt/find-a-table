@@ -7,7 +7,7 @@ export default function DishCard({
 }:{
     name:string,
     description:string,
-    price:Number
+    price:string
 }) {
   return (
     <div className='flex flex-col gap-2 bg-white p-4'>
