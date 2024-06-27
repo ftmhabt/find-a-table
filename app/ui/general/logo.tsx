@@ -1,5 +1,7 @@
+import Link from "next/link";
+
 export default function Logo() {
   return (
-    <div className="mr-auto">logo</div>
+    <Link className="mr-auto" href="/">logo</Link>
   )
 }
