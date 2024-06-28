@@ -7,7 +7,7 @@ export default function Search() {
   const [location, setLocation] = useState("");
   const router = useRouter();
   return (
-    <div className="flex">
+    <div className="flex text-black">
       <input
         type="text"
         name="search"
