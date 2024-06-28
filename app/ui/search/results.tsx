@@ -15,9 +15,8 @@ const select = {
 };
 
 async function fetchRestaurantsByLocation(
-  city: string | null
+  city: string
 ): Promise<RestaurantType[]> {
-
   if (!city)
     return await prisma.restaurant.findMany({
       select,
@@ -41,7 +40,9 @@ async function fetchRestaurantsByLocation(
   return restaurant;
 }
 
-export default async function Results({ city }: { city: string | null }) {
+export default async function Results({ city }: { city: string }) {
+  if (!city) return <div>hhhh</div>;
+
   const restaurants = await fetchRestaurantsByLocation(city);
   return (
     <div className="flex flex-wrap p-6 gap-4">
