@@ -1,6 +1,7 @@
 import Hero from "../ui/general/hero";
 import Search from "../ui/general/search";
 import Results from "../ui/search/results";
+import Sidebar from "../ui/search/sidebar";
 
 export default function SearchPage({
   searchParams,
@@ -15,7 +16,11 @@ export default function SearchPage({
       <Hero heightClass="h-[50px]">
         <Search />
       </Hero>
+      <div>
       <Results city={city} />
+      <Sidebar/>
+      </div>
+      
     </div>
   );
 }
