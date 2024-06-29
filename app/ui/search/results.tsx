@@ -45,7 +45,7 @@ export default async function Results({ city }: { city: string }) {
 
   const restaurants = await fetchRestaurantsByLocation(city);
   return (
-    <div className="flex flex-wrap p-6 gap-4">
+    <div className="flex flex-wrap gap-4">
       {restaurants.map((restaurant) => (
         <Card key={restaurant.id.toString()} restaurant={restaurant} />
       ))}

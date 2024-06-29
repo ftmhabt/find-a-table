@@ -16,11 +16,10 @@ export default function SearchPage({
       <Hero heightClass="h-[50px]">
         <Search />
       </Hero>
-      <div>
-      <Results city={city} />
-      <Sidebar/>
+      <div className="flex gap-6 p-6">
+        <Sidebar />
+        <Results city={city} />
       </div>
-      
     </div>
   );
 }
