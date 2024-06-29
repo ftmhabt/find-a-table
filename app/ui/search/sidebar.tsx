@@ -5,8 +5,15 @@ const prisma = new PrismaClient();
 async function getLocations() {
   return await prisma.location.findMany();
 }
+
+async function getCuisines() {
+    return await prisma.cuisine.findMany();
+  }
+
+
 export default async function Sidebar() {
   const locations = await getLocations();
+  const cuisines = await getCuisines();
   return (
     <div>
       <h1>Location</h1>
@@ -17,7 +24,9 @@ export default async function Sidebar() {
       </ul>
       <h1>Cuisine</h1>
       <ul>
-        <li></li>
+      {cuisines.map((cuisine) => (
+          <li key={cuisine.id}>{cuisine.name}</li>
+        ))}
       </ul>
     </div>
   );
