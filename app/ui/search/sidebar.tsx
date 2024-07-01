@@ -21,14 +21,26 @@ export default async function Sidebar() {
       <ul>
         {locations.map((location) => (
           <li key={location.id}>
-            <Link href={`/search?city=${location.name}`}> {location.name}</Link>
+            <Link href={{
+              pathname:'search/',
+              query:{
+                city:location.name
+              }
+            }}> {location.name}</Link>
           </li>
         ))}
       </ul>
       <h1 className="text-xl font-bold py-1">Cuisine</h1>
       <ul>
         {cuisines.map((cuisine) => (
-          <li key={cuisine.id}>{cuisine.name}</li>
+          <li key={cuisine.id}>
+            <Link href={{
+              pathname:'search/',
+              query:{
+                cuisine:cuisine.name
+              }
+            }}> {cuisine.name}</Link>
+          </li>
         ))}
       </ul>
     </div>
