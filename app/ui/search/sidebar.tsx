@@ -1,5 +1,6 @@
-"use server"
+"use server";
 import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 
 const prisma = new PrismaClient();
 
@@ -19,7 +20,9 @@ export default async function Sidebar() {
       <h1 className="text-xl font-bold py-1">Location</h1>
       <ul>
         {locations.map((location) => (
-          <li key={location.id}>{location.name}</li>
+          <li key={location.id}>
+            <Link href={`/search?city=${location.name}`}> {location.name}</Link>
+          </li>
         ))}
       </ul>
       <h1 className="text-xl font-bold py-1">Cuisine</h1>
