@@ -14,8 +14,9 @@ const select = {
   slug: true,
 };
 
-async function fetchRestaurantsByLocation(
-  city: string
+async function fetchRestaurants(
+  city: string,
+  cuisine: string,
 ): Promise<RestaurantType[]> {
   if (!city)
     return await prisma.restaurant.findMany({
@@ -26,7 +27,12 @@ async function fetchRestaurantsByLocation(
     where: {
       location: {
         name: {
-          equals: city.toLowerCase(),
+          equals: city.toLowerCase()||'',
+        },
+      },
+      cuisine: {
+        name: {
+          equals: cuisine.toLowerCase()||'',
         },
       },
     },
@@ -40,10 +46,10 @@ async function fetchRestaurantsByLocation(
   return restaurant;
 }
 
-export default async function Results({ city }: { city: string }) {
+export default async function Results({ city,cuisine }: { city: string ,cuisine:string}) {
   if (!city) return <div>hhhh</div>;
 
-  const restaurants = await fetchRestaurantsByLocation(city);
+  const restaurants = await fetchRestaurants(city,cuisine);
   return (
     <div className="flex flex-wrap gap-4">
       {restaurants.map((restaurant) => (

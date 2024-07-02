@@ -8,9 +8,11 @@ export default function SearchPage({
 }: {
   searchParams?: {
     city?: string;
+    cuisine?:string;
   };
 }) {
   const city = searchParams?.city || "";
+  const cuisine = searchParams?.cuisine || "";
   return (
     <div>
       <Hero heightClass="h-[50px]">
@@ -18,7 +20,7 @@ export default function SearchPage({
       </Hero>
       <div className="flex gap-6 p-6">
         <Sidebar />
-        <Results city={city} />
+        <Results city={city} cuisine={cuisine}/>
       </div>
     </div>
   );
