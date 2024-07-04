@@ -1,12 +1,15 @@
 import { Cuisine, Location } from "@prisma/client";
 import Link from "next/link";
+import { SearchParams } from "../../search/page";
 
 export default async function Sidebar({
   locations,
   cuisines,
+  searchParams
 }: {
   locations: Location[];
   cuisines: Cuisine[];
+  searchParams:SearchParams;
 }) {
   return (
     <div className="w-[500px]">
@@ -18,6 +21,7 @@ export default async function Sidebar({
               href={{
                 pathname: "search/",
                 query: {
+                  ...searchParams,
                   city: location.name,
                 },
               }}
@@ -35,6 +39,7 @@ export default async function Sidebar({
               href={{
                 pathname: "search/",
                 query: {
+                  ...searchParams,
                   cuisine: cuisine.name,
                 },
               }}

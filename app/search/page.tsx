@@ -7,7 +7,7 @@ import Sidebar from "../ui/search/sidebar";
 import { equal } from "assert";
 import { Interface } from "readline";
 
-interface SearchParams {
+export interface SearchParams {
   city?: string;
   cuisine?: string;
 }
@@ -78,7 +78,7 @@ export default async function SearchPage({
         <Search />
       </Hero>
       <div className="flex gap-6 p-6">
-        <Sidebar locations={locations} cuisines={cuisines} />
+        <Sidebar locations={locations} cuisines={cuisines} searchParams={searchParams}/>
         <Results restaurants={restaurants} />
       </div>
     </div>
