@@ -14,15 +14,13 @@ interface SearchParams {
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams:SearchParams
+  searchParams: SearchParams;
 }) {
-  
-
   const prisma = new PrismaClient();
 
   const select = {
     id: true,
-    name: true, 
+    name: true,
     main_image: true,
     cuisine: true,
     location: true,
@@ -50,13 +48,8 @@ export default async function SearchPage({
     where.cuisine = cuisine;
   }
   async function fetchRestaurants(
-    searchParams:{
-      city?: string;
-      cuisine?: string;
-    }
+    searchParams: SearchParams
   ): Promise<RestaurantType[]> {
-    
-
     const restaurant = await prisma.restaurant.findMany({
       where,
       select,
