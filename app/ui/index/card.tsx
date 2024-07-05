@@ -1,4 +1,4 @@
-import { Cuisine, Location, PRICE } from "@prisma/client";
+import { Cuisine, Location, PRICE, Review } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import Price from "../../lib/price";
@@ -11,6 +11,7 @@ export interface RestaurantType {
   location: Location;
   price: PRICE;
   slug: string;
+  reviews: Review[];
 }
 
 export default function Card({ restaurant }: { restaurant: RestaurantType }) {
@@ -23,6 +24,7 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
           <div>
             <div>{restaurant.cuisine.name}</div>
             <div>{restaurant.location.name}</div>
+            <div>{restaurant.reviews.length} reviews</div>
             <div>
               <Price price={restaurant.price} />
             </div>

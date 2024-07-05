@@ -15,6 +15,7 @@ async function FetchRestaurants() {
       location: true,
       price: true,
       slug: true,
+      reviews: true,
     },
   });
   return restaurants;
