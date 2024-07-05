@@ -26,6 +26,7 @@ export default async function SearchPage({
     location: true,
     price: true,
     slug: true,
+    reviews: true
   };
 
   const where: any = {};

@@ -2,6 +2,7 @@ import { Cuisine, Location, PRICE, Review } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import Price from "../../lib/price";
+import { CalculateRatingAverage } from "../../utils/calculate-rating-average";
 
 export interface RestaurantType {
   id: Number;
@@ -15,6 +16,15 @@ export interface RestaurantType {
 }
 
 export default function Card({ restaurant }: { restaurant: RestaurantType }) {
+  
+  const renderRatingDisplay = () => {
+    const avg = CalculateRatingAverage(restaurant.reviews);
+    if (avg > 4) return "awesome";
+    else if (avg <= 4 && avg > 3) return "good";
+    else if (avg <= 3 && avg > 2) return "average";
+    else return "";
+  };
+
   return (
     <div className="w-[200px] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
       <Link href={`restaurant/${restaurant.slug}`}>
@@ -28,6 +38,7 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
               {restaurant.reviews.length} review
               {restaurant.reviews.length === 1 ? "" : "s"}
             </div>
+            <div>{renderRatingDisplay()}</div>
             <div>
               <Price price={restaurant.price} />
             </div>
