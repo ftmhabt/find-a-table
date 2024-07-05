@@ -71,12 +71,13 @@ model Cuisine {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  name    String
-  city    String
-  email   String
-  phone   String
-  reviews Review[]
+  id       Int      @id @default(autoincrement())
+  name     String
+  city     String
+  email    String
+  phone    String
+  password String
+  reviews  Review[]
 
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
