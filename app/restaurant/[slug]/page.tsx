@@ -6,7 +6,7 @@ import { error } from "console";
 
 const prisma = new PrismaClient();
 
-interface Restaurant {
+export interface Restaurant {
   id: Number;
   name: string;
   images: string[];
@@ -26,7 +26,7 @@ async function fetchRestaurantBySlug(slug: string): Promise<Restaurant> {
       images: true,
       description: true,
       slug: true,
-      reviews: true
+      reviews: true,
     },
   });
 
@@ -42,15 +42,10 @@ export default async function restaurantDatails({
 }: {
   params: { slug: string };
 }) {
-  const resaurant = await fetchRestaurantBySlug(params.slug);
+  const restaurant = await fetchRestaurantBySlug(params.slug);
   return (
     <div>
-      <RestaurantDetailsCard
-        description={resaurant.description}
-        photos={resaurant.images}
-        slug={params.slug}
-        reviews={resaurant.reviews}
-      />
+      <RestaurantDetailsCard restaurant={restaurant} slug={params.slug} />
       <ReserveCard />
     </div>
   );
