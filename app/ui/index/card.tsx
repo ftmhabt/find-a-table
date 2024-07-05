@@ -24,7 +24,10 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
           <div>
             <div>{restaurant.cuisine.name}</div>
             <div>{restaurant.location.name}</div>
-            <div>{restaurant.reviews.length} reviews</div>
+            <div>
+              {restaurant.reviews.length} review
+              {restaurant.reviews.length === 1 ? "" : "s"}
+            </div>
             <div>
               <Price price={restaurant.price} />
             </div>
