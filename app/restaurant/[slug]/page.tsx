@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Review } from "@prisma/client";
 import Hero from "../../ui/general/hero";
 import ReserveCard from "../../ui/restaurant/reserve-card";
 import RestaurantDetailsCard from "../../ui/restaurant/restaurant-card";
@@ -12,6 +12,7 @@ interface Restaurant {
   images: string[];
   description: string;
   slug: string;
+  reviews: Review[];
 }
 
 async function fetchRestaurantBySlug(slug: string): Promise<Restaurant> {
@@ -25,6 +26,7 @@ async function fetchRestaurantBySlug(slug: string): Promise<Restaurant> {
       images: true,
       description: true,
       slug: true,
+      reviews: true
     },
   });
 
@@ -45,8 +47,9 @@ export default async function restaurantDatails({
     <div>
       <RestaurantDetailsCard
         description={resaurant.description}
-        photos={resaurant.images.map((image) => image)}
+        photos={resaurant.images}
         slug={params.slug}
+        reviews={resaurant.reviews}
       />
       <ReserveCard />
     </div>
