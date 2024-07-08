@@ -14,6 +14,7 @@ export default function RestaurantDetailsCard({
     <div className="max-w-[500px] bg-slate-200 -mt-10 ml-10">
       <RestaurantBar slug={slug} />
       <p>{restaurant.description}</p>
+      <div className="grid grid-cols-3 gap-2 p-2">
       {restaurant.images.map((image, index) => (
         <Image
           key={index}
@@ -24,6 +25,7 @@ export default function RestaurantDetailsCard({
           unoptimized={true}
         />
       ))}
+      </div>
       {restaurant.reviews.map((review) => (
         <div key={review.id}>
           <div>{review.name}</div>
