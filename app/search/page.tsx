@@ -78,7 +78,7 @@ export default async function SearchPage({
       <Hero heightClass="h-[50px]">
         <Search />
       </Hero>
-      <div className="flex gap-6 p-6">
+      <div className="grid grid-cols-1/3 p-6">
         <Sidebar locations={locations} cuisines={cuisines} searchParams={searchParams}/>
         <Results restaurants={restaurants} />
       </div>

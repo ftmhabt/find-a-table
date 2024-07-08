@@ -12,7 +12,7 @@ export default async function Sidebar({
   searchParams:SearchParams;
 }) {
   return (
-    <div className="w-[500px]">
+    <div>
       <h1 className="text-xl font-bold py-1">Location</h1>
       <ul>
         {locations.map((location) => (
