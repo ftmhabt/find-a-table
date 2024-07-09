@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Price from "../../lib/price";
 import { CalculateRatingAverage } from "../../utils/calculate-rating-average";
+import { Stars } from "../../utils/stars";
 
 export interface RestaurantType {
   id: Number;
@@ -39,6 +40,17 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
               {restaurant.reviews.length === 1 ? "" : "s"}
             </div>
             <div>{renderRatingDisplay()}</div>
+            <div className="flex">
+            {Stars(CalculateRatingAverage(restaurant.reviews)).map((starSrc, index) => (
+              <Image
+                key={index}
+                src={starSrc}
+                alt="star"
+                width={10}
+                height={10}
+              />
+            ))}
+          </div>
             <div>
               <Price price={restaurant.price} />
             </div>
