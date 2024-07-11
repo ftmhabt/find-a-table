@@ -3,6 +3,7 @@ import Hero from "../../ui/general/hero";
 import ReserveCard from "../../ui/restaurant/reserve-card";
 import RestaurantDetailsCard from "../../ui/restaurant/restaurant-card";
 import { error } from "console";
+import { notFound } from "next/navigation";
 
 const prisma = new PrismaClient();
 
@@ -31,7 +32,7 @@ async function fetchRestaurantBySlug(slug: string): Promise<Restaurant> {
   });
 
   if (!restaurant) {
-    throw new Error();
+    notFound();
   }
 
   return restaurant;
