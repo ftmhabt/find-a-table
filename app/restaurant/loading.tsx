@@ -1,4 +1,4 @@
-import Hero from "../../ui/general/hero";
+import Hero from "../ui/general/hero";
 
 export default function loading() {
   return (
