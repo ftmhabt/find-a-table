@@ -1,13 +1,13 @@
 import Logo from "./logo";
 import LinkButton from "./link-button";
-import SignUpModal from "../auth/signup";
+import LoginModal from "../auth/login-modal";
 
 export default function Header() {
   return (
     <div className="flex py-1">
         <Logo/>
-        <LinkButton text="sign in" url=''/>
-        <SignUpModal/>
+        <LoginModal isSignin={true}/>
+        <LoginModal isSignin={false}/>
     </div>
   )
 }
