@@ -18,14 +18,31 @@ const style = {
   p: 4,
 };
 
-export default function LoginModal({isSignin}:{isSignin:boolean}) {
+export interface InputProps {
+  inputs: { name: string, city: string, email: string, phone: string, password: string };
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+export default function LoginModal({ isSignin }: { isSignin: boolean }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [inputs, setInputs] = useState({ name: "", city: "", email: "", phone: "", password: "" });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const props = {
+    inputs,
+    handleChange
+  }
+
   return (
     <div>
-      <Button text={isSignin?'sign in':'sign up'} onClick={handleOpen} />
+      <Button text={isSignin ? 'sign in' : 'sign up'} onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
@@ -33,7 +50,7 @@ export default function LoginModal({isSignin}:{isSignin:boolean}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        {isSignin?<SigninForm/>:<SignupForm/>}
+          {isSignin ? <SigninForm props={props} /> : <SignupForm props={props} />}
         </Box>
       </Modal>
     </div>
