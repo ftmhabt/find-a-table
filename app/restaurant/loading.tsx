@@ -1,9 +1,10 @@
-import Hero from "../ui/general/hero";
+import spinner from '../icons/spinner.png'
+
 
 export default function loading() {
   return (
-    <div>
-      <div className="max-w-[500px] h-screen bg-slate-200 -mt-10 ml-10"></div>
+    <div className="flex items-center justify-center h-[80vh]">
+      <img src={spinner} alt="loading" />
     </div>
   )
 }
