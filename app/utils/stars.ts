@@ -1,6 +1,6 @@
-import empty from "../icons/empty-star.png";
-import full from "../icons/full-star.png";
-import half from "../icons/half-star.png";
+import empty from "../icons/star-outline.png";
+import full from "../icons/star.png";
+import half from "../icons/star-half-full.png";
 
 export function Stars(number: number) {
   const decimal = number % 1;
