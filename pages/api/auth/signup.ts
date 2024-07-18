@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import validator from "validator";
 export default function signup(req: NextApiRequest, res: NextApiResponse) {
 
     if (req.method === 'post')
