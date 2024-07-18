@@ -74,7 +74,7 @@ model User {
   id       Int      @id @default(autoincrement())
   name     String
   city     String
-  email    String
+  email    String   @unique
   phone    String
   password String
   reviews  Review[]
