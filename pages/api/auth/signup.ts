@@ -1,10 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import validator from "validator";
+import { PrismaClient } from "@prisma/client";
 
-export default function signup(req: NextApiRequest, res: NextApiResponse) {
+const prisma = new PrismaClient();
+
+export default async function signup(req: NextApiRequest, res: NextApiResponse) {
 
     const { name, email, phone, city, password } = req.body;
-    
+
     const errors: string[] = [];
 
     const validationSchema = [
@@ -44,6 +47,17 @@ export default function signup(req: NextApiRequest, res: NextApiResponse) {
     if (errors.length) {
         res.status(400).json({ errorMessage: errors[0] })
     }
+
+    const userWithEmail = await prisma.user.findUnique({
+        where: {
+            email
+        }
+    })
+
+    if (userWithEmail) {
+        res.status(400).json({ errorMessage: "User with this email already exists" })
+    }
+    
     if (req.method === 'post')
         res.status(200).json({
             hello: 'there'
