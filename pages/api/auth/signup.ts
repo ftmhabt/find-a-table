@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import validator from "validator";
 import { PrismaClient } from "@prisma/client";
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
@@ -57,7 +58,7 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
     if (userWithEmail) {
         res.status(400).json({ errorMessage: "User with this email already exists" })
     }
-    
+
     if (req.method === 'post')
         res.status(200).json({
             hello: 'there'
