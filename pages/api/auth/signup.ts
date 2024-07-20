@@ -59,6 +59,8 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
         res.status(400).json({ errorMessage: "User with this email already exists" })
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     if (req.method === 'post')
         res.status(200).json({
             hello: 'there'
