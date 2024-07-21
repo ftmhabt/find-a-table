@@ -61,6 +61,16 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const user =await prisma.user.create({
+        data:{
+            name,
+            email,
+            phone,
+            city,
+            password:hashedPassword,
+        }
+    })
+
     if (req.method === 'post')
         res.status(200).json({
             hello: 'there'
