@@ -84,6 +84,6 @@ export default async function signup(req: NextApiRequest, res: NextApiResponse) 
 
     if (req.method === 'post')
         res.status(200).json({
-            hello: 'there'
+            token
         })
 }
