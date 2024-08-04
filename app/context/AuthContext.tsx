@@ -11,8 +11,8 @@ interface User {
 }
 interface State {
     loading: boolean,
-    data: string | null,
-    error: User | null
+    data: User | null,
+    error: string | null
 }
 
 interface AuthState extends State {
