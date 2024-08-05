@@ -6,7 +6,7 @@ import { AuthorizationContext } from "../../context/AuthContext";
 import loading from '../../icons/spinner.png'
 
 export default function SigninForm({ props }: { props: InputProps }) {
-  const { inputs, handleChange } = props;
+  const { inputs, handleChange,handleClose } = props;
   const [disabled, setDisabled] = useState(true);
   const { signin } = useAuth();
   const { data, error, loading, setAuthState } = useContext(AuthorizationContext)
@@ -26,7 +26,7 @@ export default function SigninForm({ props }: { props: InputProps }) {
         <div>sign in</div>
         <input type="email" name="email" id="email" placeholder="email" value={inputs.email} onChange={(e) => handleChange(e)} />
         <input type="password" name="password" id="password" placeholder="password" value={inputs.password} onChange={(e) => handleChange(e)} />
-        <button disabled={disabled} className="disabled:bg-gray-500" onClick={() => signin({ email: inputs.email, password: inputs.password })}>submit</button>
+        <button disabled={disabled} className="disabled:bg-gray-500" onClick={() => signin({ email: inputs.email, password: inputs.password },handleClose)}>submit</button>
         <h1>{error? error:''}</h1>
       </>}
     </LoginWrapper>

@@ -22,6 +22,7 @@ const style = {
 export interface InputProps {
   inputs: { name: string, city: string, email: string, phone: string, password: string };
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClose: () => void;
 }
 export default function LoginModal({ isSignin }: { isSignin: boolean }) {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,8 @@ export default function LoginModal({ isSignin }: { isSignin: boolean }) {
 
   const props = {
     inputs,
-    handleChange
+    handleChange,
+    handleClose
   }
 
   return (

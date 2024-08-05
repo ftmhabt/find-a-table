@@ -7,7 +7,7 @@ const useAuth = () => {
 
     const { data, error, loading, setAuthState } = useContext(AuthorizationContext)
 
-    const signin = async ({ email, password }: { email: string, password: string }) => {
+    const signin = async ({ email, password }: { email: string, password: string }, handleClose: () => void) => {
 
         setAuthState({
             data: null,
@@ -20,18 +20,18 @@ const useAuth = () => {
                 email,
                 password
             })
-            
+
             setAuthState({
-                data:response.data,
-                error:null,
-                loading:false
+                data: response.data,
+                error: null,
+                loading: false
             })
 
         } catch (error: any) {
             setAuthState({
-                data:null,
-                error:error.response.data.errorMessage,
-                loading:false
+                data: null,
+                error: error.response.data.errorMessage,
+                loading: false
             })
         }
     }
