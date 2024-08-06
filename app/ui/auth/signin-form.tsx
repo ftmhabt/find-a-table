@@ -3,7 +3,8 @@ import LoginWrapper from "./login-wrapper";
 import { InputProps } from "./login-modal";
 import useAuth from "../../../hooks/useAuth";
 import { AuthorizationContext } from "../../context/AuthContext";
-import loading from '../../icons/spinner.png'
+import spinner from '../../icons/spinner.png'
+import Image from 'next/image'
 
 export default function SigninForm({ props }: { props: InputProps }) {
   const { inputs, handleChange,handleClose } = props;
@@ -21,7 +22,7 @@ export default function SigninForm({ props }: { props: InputProps }) {
   }, [inputs])
   return (
     <LoginWrapper>
-      {loading ? <img src={loading} alt="loading" /> : <>
+      {loading ? <Image src={spinner} alt='loading' /> : <>
         <div>welcome</div>
         <div>sign in</div>
         <input type="email" name="email" id="email" placeholder="email" value={inputs.email} onChange={(e) => handleChange(e)} />

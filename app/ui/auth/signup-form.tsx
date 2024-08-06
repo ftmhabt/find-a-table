@@ -3,6 +3,8 @@ import { InputProps } from "./login-modal";
 import { useContext, useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { AuthorizationContext } from "../../context/AuthContext";
+import spinner from '../../icons/spinner.png'
+import Image from 'next/image'
 
 export default function SignupForm({ props }: { props: InputProps }) {
   const { inputs, handleChange, handleClose } = props;
@@ -28,7 +30,7 @@ export default function SignupForm({ props }: { props: InputProps }) {
   return (
     <LoginWrapper>
       {loading ? (
-        <img src={loading} alt="loading" />
+        <Image src={spinner} alt='loading' />
       ) : (
         <>
           <div>welcome</div>
@@ -50,19 +52,19 @@ export default function SignupForm({ props }: { props: InputProps }) {
             onChange={(e) => handleChange(e)}
           />
           <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email"
-            value={inputs.email}
-            onChange={(e) => handleChange(e)}
-          />
-          <input
             type="text"
             name="phone"
             id="phone"
             placeholder="phone"
             value={inputs.phone}
+            onChange={(e) => handleChange(e)}
+          />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="email"
+            value={inputs.email}
             onChange={(e) => handleChange(e)}
           />
           <input
