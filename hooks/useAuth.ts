@@ -26,6 +26,7 @@ const useAuth = () => {
                 error: null,
                 loading: false
             })
+            handleClose();
 
         } catch (error: any) {
             setAuthState({
