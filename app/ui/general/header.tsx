@@ -1,13 +1,22 @@
+"use client";
 import Logo from "./logo";
-import LinkButton from "./link-button";
 import LoginModal from "../auth/login-modal";
+import { useContext } from "react";
+import { AuthorizationContext } from "../../context/AuthContext";
 
 export default function Header() {
+  const { data } = useContext(AuthorizationContext);
   return (
     <div className="flex py-1">
-        <Logo/>
-        <LoginModal isSignin={true}/>
-        <LoginModal isSignin={false}/>
+      <Logo />
+      {data ? (
+        <button>logout</button>
+      ) : (
+        <>
+          <LoginModal isSignin={true} />
+          <LoginModal isSignin={false} />
+        </>
+      )}
     </div>
-  )
+  );
 }
