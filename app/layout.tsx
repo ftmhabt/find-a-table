@@ -1,6 +1,6 @@
 import Header from "./ui/general/header";
 import "../styles/globals.css";
-import Head from "next/head";
+import "react-datepicker/dist/react-datepicker.css";
 import { Metadata } from "next";
 import AuthContext from "./context/AuthContext";
 

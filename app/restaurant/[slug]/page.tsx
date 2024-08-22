@@ -14,6 +14,8 @@ export interface Restaurant {
   description: string;
   slug: string;
   reviews: Review[];
+  open_time: string;
+  close_time: string;
 }
 
 async function fetchRestaurantBySlug(slug: string): Promise<Restaurant> {
@@ -28,6 +30,8 @@ async function fetchRestaurantBySlug(slug: string): Promise<Restaurant> {
       description: true,
       slug: true,
       reviews: true,
+      open_time: true,
+      close_time: true,
     },
   });
 
@@ -47,7 +51,7 @@ export default async function restaurantDatails({
   return (
     <div>
       <RestaurantDetailsCard restaurant={restaurant} slug={params.slug} />
-      <ReserveCard />
+      <ReserveCard open_time={restaurant.open_time} close_time={restaurant.close_time}/>
     </div>
   );
 }
