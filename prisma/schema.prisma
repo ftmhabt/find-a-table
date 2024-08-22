@@ -1,7 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
@@ -9,16 +9,16 @@ generator client {
 }
 
 datasource db {
-    provider  = "postgresql"
-    url       = env("DATABASE_URL")
-    directUrl = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Restaurant {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   name        String
   description String
-  slug        String   @unique
+  slug        String    @unique
   main_image  String
   open_time   String
   close_time  String
@@ -26,13 +26,15 @@ model Restaurant {
   price       PRICE
   items       Item[]
   location_id Int
-  location    Location @relation(fields: [location_id], references: [id])
+  location    Location  @relation(fields: [location_id], references: [id])
   cuisine_id  Int
-  cuisine     Cuisine  @relation(fields: [cuisine_id], references: [id])
+  cuisine     Cuisine   @relation(fields: [cuisine_id], references: [id])
   reviews     Review[]
+  bookings    Booking[]
+  tables      Table[]
 
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 enum PRICE {
@@ -50,7 +52,7 @@ model Item {
   restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
 
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Location {
@@ -59,7 +61,7 @@ model Location {
   restaurants Restaurant[]
 
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Cuisine {
@@ -68,7 +70,7 @@ model Cuisine {
   restaurants Restaurant[]
 
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model User {
@@ -81,7 +83,7 @@ model User {
   reviews  Review[]
 
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Review {
@@ -95,5 +97,48 @@ model Review {
   user          User       @relation(fields: [user_id], references: [id])
 
   created_at DateTime @default(now())
-  updated_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Booking {
+  id               Int                @id @default(autoincrement())
+  number_of_people Int
+  booking_time     DateTime
+  booker_email     String
+  booker_phone     String
+  booker_name      String
+  booker_occasion  String
+  booker_request   String
+  tables           BookingsOnTables[]
+
+  restaurant_id Int
+  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Table {
+  id       Int                @id @default(autoincrement())
+  seats    Int
+  bookings BookingsOnTables[]
+
+  restaurant_id Int
+  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model BookingsOnTables {
+  booking_id Int
+  booking    Booking @relation(fields: [booking_id], references: [id])
+
+  table_id Int
+  tabel    Table @relation(fields: [table_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@id([booking_id, table_id])
 }
