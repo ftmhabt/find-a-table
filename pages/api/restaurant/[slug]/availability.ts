@@ -45,5 +45,17 @@ export default async function handler(
     },
   });
 
-  return res.json({ searchTime, bookings });
+  const bookingTablesObj: { [key: string]: { [key: number]: true } } = {};
+
+  bookings.forEach((booking) => {
+    bookingTablesObj[booking.booking_time.toISOString()] =
+      booking.tables.reduce((obj, table) => {
+        return {
+          ...obj,
+          [table.table_id]: true,
+        };
+      }, {});
+  });
+  
+  return res.json({ searchTime, bookings, bookingTablesObj });
 }
