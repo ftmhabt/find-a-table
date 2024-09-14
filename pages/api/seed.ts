@@ -11,7 +11,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  //   await prisma.table.deleteMany();
+    await prisma.table.deleteMany();
   await prisma.review.deleteMany();
   await prisma.item.deleteMany();
   await prisma.restaurant.deleteMany();
@@ -1274,22 +1274,22 @@ export default async function handler(
       ],
     });
 
-  //   await prisma.table.createMany({
-  //     data: [
-  //       {
-  //         restaurant_id: vivaanId,
-  //         seats: 4,
-  //       },
-  //       {
-  //         restaurant_id: vivaanId,
-  //         seats: 4,
-  //       },
-  //       {
-  //         restaurant_id: vivaanId,
-  //         seats: 2,
-  //       },
-  //     ],
-  //   });
+    await prisma.table.createMany({
+      data: [
+        {
+          restaurant_id: vivaanId,
+          seats: 4,
+        },
+        {
+          restaurant_id: vivaanId,
+          seats: 4,
+        },
+        {
+          restaurant_id: vivaanId,
+          seats: 2,
+        },
+      ],
+    });
 
   res.status(200).json({ name: "hello" });
 }
