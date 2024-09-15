@@ -21,11 +21,11 @@ export default async function handler(
     });
   }
 
-  const searchTime = times.find((t) => {
+  const searchTimes = times.find((t) => {
     return t.time === time;
   })?.searchTimes;
 
-  if (!searchTime) {
+  if (!searchTimes) {
     return res.status(400).json({
       errorMessage: "time format is invalid",
     });
@@ -34,8 +34,8 @@ export default async function handler(
   const bookings = await prisma.booking.findMany({
     where: {
       booking_time: {
-        gte: new Date(`${day}T${searchTime[0]}`),
-        lte: new Date(`${day}T${searchTime[searchTime.length - 1]}`),
+        gte: new Date(`${day}T${searchTimes[0]}`),
+        lte: new Date(`${day}T${searchTimes[searchTimes.length - 1]}`),
       },
     },
     select: {
@@ -74,5 +74,24 @@ export default async function handler(
 
   const tables = restaurant.tables;
 
-  return res.json({ searchTime, bookings, bookingTablesObj, tables });
+  const searchTimesWithTables = searchTimes.map((searchTime) => {
+    return { date: `${day}T${searchTime}`, time: searchTime, tables };
+  });
+
+  searchTimesWithTables.forEach((t) => {
+    t.tables = t.tables.filter((table) => {
+      if (bookingTablesObj[t.date.toString()]) {
+        if (bookingTablesObj[t.date.toString()][table.id]) return false;
+      }
+      return true;
+    });
+  });
+
+  return res.json({
+    searchTimes,
+    bookings,
+    bookingTablesObj,
+    tables,
+    searchTimesWithTables,
+  });
 }
