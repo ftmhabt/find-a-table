@@ -15,7 +15,7 @@ export default function useAvailabilities() {
     slug: string;
     day: string;
     time: string;
-    partySize: string;
+    partySize: number;
   }) => {
     setLoading(true);
 

@@ -51,7 +51,11 @@ export default async function restaurantDatails({
   return (
     <div>
       <RestaurantDetailsCard restaurant={restaurant} slug={params.slug} />
-      <ReserveCard open_time={restaurant.open_time} close_time={restaurant.close_time}/>
+      <ReserveCard
+        open_time={restaurant.open_time}
+        close_time={restaurant.close_time}
+        slug={params.slug}
+      />
     </div>
   );
 }
