@@ -4,6 +4,9 @@ import { partySize as partySizeObj, times } from "../../../data";
 import DatePicker from "react-datepicker";
 import { useState } from "react";
 import useAvailabilities from "../../../hooks/useAvailabilities";
+import { CircularProgress } from "@mui/material";
+import Link from "next/link";
+import { convertToDisplayTime, Time } from "../../utils/convertToDisplayTime";
 
 export default function ReserveCard({
   open_time,
@@ -49,7 +52,7 @@ export default function ReserveCard({
 
   return (
     <div className="flex flex-col gap-3 bg-white p-4 w-[280px] fixed top-[300px] left-[60%] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] *:flex">
-      <h1>make a reservation {day}</h1>
+      <h1>make a reservation</h1>
       <div>
         <label htmlFor="size">party size:</label>
         <select
@@ -98,7 +101,39 @@ export default function ReserveCard({
           ))}
         </select>
       </div>
-      <Button text="find a time" onClick={handleClick} />
+
+      <button
+        onClick={handleClick}
+        className="bg-blue-600 px-8 py-4 text-white rounded-xl flex justify-center"
+        disabled={loading}
+      >
+        {loading ? (
+          <CircularProgress color="inherit" size={24} />
+        ) : (
+          "find a table"
+        )}
+      </button>
+      <div className="flex flex-col">
+        {data && data.length ? (
+          <>
+            <p>select a time:</p>
+            <div className="flex flex-wrap">
+              {data.map((item) =>
+                item.available ? (
+                  <Link
+                    key={item.time}
+                    href={`/reserve/${slug}?date=${day}T${item.time}&partySize=${partySize}`}
+                  >
+                    {convertToDisplayTime(item.time as Time)}
+                  </Link>
+                ) : (
+                  <div key={item.time}>unavailable</div>
+                )
+              )}
+            </div>
+          </>
+        ) : null}
+      </div>
     </div>
   );
 }
