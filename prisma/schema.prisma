@@ -107,8 +107,8 @@ model Booking {
   booker_email     String
   booker_phone     String
   booker_name      String
-  booker_occasion  String
-  booker_request   String
+  booker_occasion  String?
+  booker_request   String?
   tables           BookingsOnTables[]
 
   restaurant_id Int
