@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { convertToDisplayTime, Time } from "../../utils/convertToDisplayTime";
+import { format } from "date-fns";
 
 export default function ReservationInfo({
   image,
@@ -27,7 +28,7 @@ export default function ReservationInfo({
       <div className="flex flex-col gap-4 p-4">
         <h1>{name}</h1>
         <div className="flex gap-4">
-          <div>{day}</div>
+          <div>{format(new Date(day), "ccc, LLL d")}</div>
           <div>{convertToDisplayTime(time as Time)}</div>
           <div>
             {partySize} {parseInt(partySize) === 1 ? "person" : "people"}
