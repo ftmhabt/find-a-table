@@ -13,7 +13,7 @@ export default function ReservationInfo({
   name: string;
   day: string;
   time: string;
-  partySize: string;
+  partySize: number;
 }) {
   return (
     <div className="flex gap-4 p-4 border border-zinc-800">
@@ -31,7 +31,7 @@ export default function ReservationInfo({
           <div>{format(new Date(day), "ccc, LLL d")}</div>
           <div>{convertToDisplayTime(time as Time)}</div>
           <div>
-            {partySize} {parseInt(partySize) === 1 ? "person" : "people"}
+            {partySize} {partySize === 1 ? "person" : "people"}
           </div>
         </div>
       </div>

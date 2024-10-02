@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import ReservationForm from "../../ui/reservation/reservation-form";
 import ReservationInfo from "../../ui/reservation/reservation-info";
 import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const prisma = new PrismaClient();
 
@@ -24,7 +25,7 @@ export default async function Reserve({
   searchParams,
 }: {
   params: { slug: string };
-  searchParams: { day: string; time: string; partySize: string };
+  searchParams: { day: string; time: string; partySize: number };
 }) {
   const restaurant = await fetchRestaurantBySlug(params.slug);
 
@@ -38,7 +39,12 @@ export default async function Reserve({
         time={searchParams.time}
         partySize={searchParams.partySize}
       />
-      <ReservationForm />
+      <ReservationForm
+        slug={params.slug}
+        day={searchParams.day}
+        time={searchParams.time}
+        partySize={searchParams.partySize}
+      />
     </div>
   );
 }

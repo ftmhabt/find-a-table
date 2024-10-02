@@ -122,7 +122,7 @@ export default function ReserveCard({
                 item.available ? (
                   <Link
                     key={item.time}
-                    href={`/reserve/${slug}?date=${day}T${item.time}&partySize=${partySize}`}
+                    href={`/reserve/${slug}?day=${day}&time=${item.time}&partySize=${partySize}`}
                   >
                     {convertToDisplayTime(item.time as Time)}
                   </Link>

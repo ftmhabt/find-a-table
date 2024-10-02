@@ -1,17 +1,52 @@
 "use client";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import useReservation from "../../../hooks/useReservation";
+import { useEffect, useState } from "react";
 
-export default function ReservationForm() {
+type FormValues = {
+  bookerName: string;
+  bookerEmail: string;
+  bookerPhone: string;
+  bookerOccasion: string;
+  bookerRequest: string;
+};
+
+export default function ReservationForm({
+  slug,
+  day,
+  time,
+  partySize,
+}: {
+  slug: string;
+  day: string;
+  time: string;
+  partySize: number;
+}) {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors, isDirty, isValid },
-  } = useForm();
+  } = useForm<FormValues>();
+  const { error, loading, createReservation } = useReservation();
+  const [isBooked, setIsBooked] = useState(false);
 
-  return (
+  const onsubmit: SubmitHandler<FormValues> = async (data) => {
+    const booking = await createReservation({
+      slug,
+      day,
+      time,
+      partySize,
+      ...data,
+    });
+    if (booking) {
+      setIsBooked(true);
+    }
+  };
+  return !isBooked ? (
     <form
       className="border border-zinc-800 flex flex-col gap-2 p-4 *:border *:border-red-400 *:outline-0"
-      onSubmit={handleSubmit((data) => console.log(data))}
+      onSubmit={handleSubmit(async (data) => await onsubmit(data))}
     >
       <input
         {...register("bookerName", {
@@ -41,9 +76,11 @@ export default function ReservationForm() {
       <input {...register("bookerRequest")} placeholder="Request (Optional)" />
       <input
         type="submit"
-        defaultValue={"complete reservation"}
-        disabled={!isDirty || !isValid}
+        value={loading ? "wait" : "complete reservation"}
+        disabled={!isDirty || !isValid || loading}
       />
     </form>
+  ) : (
+    <div>successfully booked</div>
   );
 }
