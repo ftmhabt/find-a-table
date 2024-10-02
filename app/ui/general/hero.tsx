@@ -1,15 +1,9 @@
 import { ReactNode } from "react";
 
-export default function Hero({
-  heightClass,
-  children,
-}: {
-  heightClass: string;
-  children: ReactNode;
-}) {
+export default function Hero({ children }: { children: ReactNode }) {
   return (
     <div
-      className={`flex flex-col ${heightClass} py-1 bg-red-400 text-white items-center justify-center`}
+      className={`flex min-h-20 h-full py-4 bg-secondary text-primary items-center justify-evenly`}
     >
       {children}
     </div>

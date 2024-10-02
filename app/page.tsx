@@ -2,6 +2,7 @@ import Hero from "./ui/general/hero";
 import Search from "./ui/general/search";
 import Card from "./ui/index/card";
 import { PrismaClient } from "@prisma/client";
+import { PiPersonArmsSpreadLight } from "react-icons/pi";
 
 const prisma = new PrismaClient();
 
@@ -24,9 +25,9 @@ export default async function Index() {
   const restaurants = await FetchRestaurants();
   return (
     <div>
-      <Hero heightClass="h-[200px]">
-        <h1>find your table for any occasion</h1>
+      <Hero>
         <Search />
+        <PiPersonArmsSpreadLight />
       </Hero>
       <div className="flex flex-wrap p-6 gap-4">
         {restaurants.map((restaurant) => (

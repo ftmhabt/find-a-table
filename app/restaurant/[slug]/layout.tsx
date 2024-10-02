@@ -19,8 +19,8 @@ export default function RestaurantLayout({
   }
   return (
     <>
-      <Hero heightClass="h-[300px]">
-        <h1 className="capitalize text-3xl">{renderName(params.slug)}</h1>
+      <Hero>
+        <h1 className="capitalize text-2xl px-4">{renderName(params.slug)}</h1>
       </Hero>
       {children}
     </>
