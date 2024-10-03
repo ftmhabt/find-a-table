@@ -17,7 +17,6 @@ export interface RestaurantType {
 }
 
 export default function Card({ restaurant }: { restaurant: RestaurantType }) {
-  
   const renderRatingDisplay = () => {
     const avg = CalculateRatingAverage(restaurant.reviews);
     if (avg > 4) return "awesome";
@@ -27,7 +26,7 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
   };
 
   return (
-    <div className="w-[200px] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
+    <div className="shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
       <Link href={`restaurant/${restaurant.slug}`}>
         <img src={restaurant.main_image} height={120} alt={restaurant.name} />
         <div className="flex flex-col gap-2 p-2">
@@ -41,16 +40,18 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
             </div>
             <div>{renderRatingDisplay()}</div>
             <div className="flex">
-            {Stars(CalculateRatingAverage(restaurant.reviews)).map((starSrc, index) => (
-              <Image
-                key={index}
-                src={starSrc}
-                alt="star"
-                width={10}
-                height={10}
-              />
-            ))}
-          </div>
+              {Stars(CalculateRatingAverage(restaurant.reviews)).map(
+                (starSrc, index) => (
+                  <Image
+                    key={index}
+                    src={starSrc}
+                    alt="star"
+                    width={10}
+                    height={10}
+                  />
+                )
+              )}
+            </div>
             <div>
               <Price price={restaurant.price} />
             </div>

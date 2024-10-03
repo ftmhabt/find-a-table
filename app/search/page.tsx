@@ -2,10 +2,8 @@ import { PrismaClient } from "@prisma/client";
 import Hero from "../ui/general/hero";
 import Search from "../ui/general/search";
 import { RestaurantType } from "../ui/index/card";
-import Results from "../ui/search/results";
 import Sidebar from "../ui/search/sidebar";
-import { equal } from "assert";
-import { Interface } from "readline";
+import RestaurantContainer from "../ui/general/restaurant-container";
 
 export interface SearchParams {
   city?: string;
@@ -26,7 +24,7 @@ export default async function SearchPage({
     location: true,
     price: true,
     slug: true,
-    reviews: true
+    reviews: true,
   };
 
   const where: any = {};
@@ -75,13 +73,17 @@ export default async function SearchPage({
   const cuisines = await getCuisines();
   return (
     <div>
-      <Hero heightClass="h-[50px]">
+      <Hero>
         <Search />
       </Hero>
-      <div className="grid grid-cols-1/3 p-6">
-        <Sidebar locations={locations} cuisines={cuisines} searchParams={searchParams}/>
-        <Results restaurants={restaurants} />
-      </div>
+      {/* <div className="grid grid-cols-1/3 p-6">
+        <Sidebar
+          locations={locations}
+          cuisines={cuisines}
+          searchParams={searchParams}
+        /> */}
+      <RestaurantContainer restaurants={restaurants} />
+      {/* </div> */}
     </div>
   );
 }

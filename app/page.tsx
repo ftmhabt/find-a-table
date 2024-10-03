@@ -1,8 +1,8 @@
 import Hero from "./ui/general/hero";
 import Search from "./ui/general/search";
-import Card from "./ui/index/card";
 import { PrismaClient } from "@prisma/client";
-import { PiPersonArmsSpreadLight } from "react-icons/pi";
+import { PiUserCircle } from "react-icons/pi";
+import RestaurantContainer from "./ui/general/restaurant-container";
 
 const prisma = new PrismaClient();
 
@@ -27,13 +27,9 @@ export default async function Index() {
     <div>
       <Hero>
         <Search />
-        <PiPersonArmsSpreadLight />
+        <PiUserCircle size={30} className="text-primary" />
       </Hero>
-      <div className="flex flex-wrap p-6 gap-4">
-        {restaurants.map((restaurant) => (
-          <Card key={restaurant.id} restaurant={restaurant} />
-        ))}
-      </div>
+      <RestaurantContainer restaurants={restaurants} />
     </div>
   );
 }
