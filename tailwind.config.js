@@ -16,7 +16,10 @@ module.exports = {
       colors: {
         'primary': '#2E3037',
         'secondary': '#F5F6F8'
-      }
+      },
+      screens: {
+        'xsm': '420px',
+      },
     },
   },
   plugins: [],
