@@ -10,6 +10,11 @@ const nextConfig = {
         port: '',
         pathname: '/photos/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'resizer.otstatic.com',
+        pathname: '/v2/photos/**',
+      },
     ],
   },
 }
