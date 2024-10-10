@@ -3,6 +3,7 @@ import Search from "./ui/general/search";
 import { PrismaClient } from "@prisma/client";
 import { PiUserCircle } from "react-icons/pi";
 import RestaurantContainer from "./ui/general/restaurant-container";
+import Card from "./ui/index/card";
 
 const prisma = new PrismaClient();
 
@@ -29,7 +30,11 @@ export default async function Index() {
         <Search />
         <PiUserCircle size={30} className="text-primary" />
       </Hero>
-      <RestaurantContainer restaurants={restaurants} />
+      <RestaurantContainer>
+        {restaurants.map((restaurant) => (
+          <Card key={restaurant.id.toString()} restaurant={restaurant} />
+        ))}
+      </RestaurantContainer>
     </div>
   );
 }

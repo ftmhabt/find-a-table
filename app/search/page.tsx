@@ -1,10 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import Hero from "../ui/general/hero";
 import Search from "../ui/general/search";
-import { RestaurantType } from "../ui/index/card";
+import Card, { RestaurantType } from "../ui/index/card";
 import Sidebar from "../ui/search/sidebar";
 import RestaurantContainer from "../ui/general/restaurant-container";
-
 export interface SearchParams {
   city?: string;
   cuisine?: string;
@@ -82,7 +81,11 @@ export default async function SearchPage({
           cuisines={cuisines}
           searchParams={searchParams}
         /> */}
-      <RestaurantContainer restaurants={restaurants} />
+      <RestaurantContainer>
+        {restaurants.map((restaurant) => (
+          <Card key={restaurant.id.toString()} restaurant={restaurant} />
+        ))}
+      </RestaurantContainer>
       {/* </div> */}
     </div>
   );
