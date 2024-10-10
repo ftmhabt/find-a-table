@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import Hero from "../ui/general/hero";
 import Search from "../ui/general/search";
-import Card, { RestaurantType } from "../ui/index/card";
+import Card, { RestaurantType } from "../ui/general/card";
 import Sidebar from "../ui/search/sidebar";
 import RestaurantContainer from "../ui/general/restaurant-container";
 export interface SearchParams {

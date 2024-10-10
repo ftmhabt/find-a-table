@@ -3,7 +3,7 @@ import Search from "./ui/general/search";
 import { PrismaClient } from "@prisma/client";
 import { PiUserCircle } from "react-icons/pi";
 import RestaurantContainer from "./ui/general/restaurant-container";
-import Card from "./ui/index/card";
+import Card from "./ui/general/card";
 
 const prisma = new PrismaClient();
 
