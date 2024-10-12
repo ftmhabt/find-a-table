@@ -21,10 +21,10 @@ export default function Search() {
   }
 
   return (
-    <div className="flex items-center text-primary bg-white gap-2 min-w-60 max-w-96 px-2 rounded-lg shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
+    <div className="flex items-center text-primary bg-white gap-2 w-full px-2 rounded-lg shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
       <PiMagnifyingGlassLight size={25} className="text-[#9CA3AF]" />
       <input
-        className="w-full h-8 focus:outline-0 focus:bg-white"
+        className="flex-[2] h-8 focus:outline-0 focus:bg-white"
         type="text"
         name="search"
         id="search"

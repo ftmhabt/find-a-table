@@ -11,7 +11,7 @@ export default function Header() {
   const { signout } = useAuth();
   return (
     <header
-      className={`flex min-h-20 h-full py-4 bg-secondary text-primary items-center justify-evenly`}
+      className={`flex gap-2 min-h-20 h-full py-4 px-6 bg-secondary text-primary items-center justify-evenly`}
     >
       <Search />
       {loading ? (

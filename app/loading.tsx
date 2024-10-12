@@ -6,10 +6,7 @@ import Search from "./ui/general/search";
 export default function Loading() {
   return (
     <div>
-      <Hero>
-        <Search />
-        <PiUserCircle size={30} className="text-primary" />
-      </Hero>
+      <div className="min-h-20 bg-secondary"></div>
       <RestaurantContainer>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num) => (
           <div
