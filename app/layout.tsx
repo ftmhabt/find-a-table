@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className=" m-0 p-0">
+      <body className=" m-0 p-0 text-primary">
         <AuthContext>
           <div className="max-w-[900px] min-h-[100vh] mx-auto">{children}</div>
         </AuthContext>

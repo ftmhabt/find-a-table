@@ -5,18 +5,23 @@ import { SearchParams } from "../../search/page";
 export default async function Sidebar({
   locations,
   cuisines,
-  searchParams
+  searchParams,
 }: {
   locations: Location[];
   cuisines: Cuisine[];
-  searchParams:SearchParams;
+  searchParams: SearchParams;
 }) {
   return (
-    <div>
-      <h1 className="text-xl font-bold py-1">Location</h1>
-      <ul>
+    <div className="p-6 pt-0 bg-secondary">
+      <h1 className="text-xs font-bold py-1">Location</h1>
+      <ul className="flex gap-5 *:border-primary *:border *:px-2 *:rounded-md mb-2">
         {locations.map((location) => (
-          <li key={location.id}>
+          <li
+            key={location.id}
+            className={
+              location.name === searchParams.city ? "bg-primary text-white" : ""
+            }
+          >
             <Link
               href={{
                 pathname: "search/",
@@ -31,10 +36,18 @@ export default async function Sidebar({
           </li>
         ))}
       </ul>
-      <h1 className="text-xl font-bold py-1">Cuisine</h1>
-      <ul>
+
+      <h1 className="text-xs font-bold py-1">Cuisine</h1>
+      <ul className="flex gap-5 *:border-primary *:border *:px-2 *:rounded-md">
         {cuisines.map((cuisine) => (
-          <li key={cuisine.id}>
+          <li
+            key={cuisine.id}
+            className={
+              cuisine.name === searchParams.cuisine
+                ? "bg-primary text-white"
+                : ""
+            }
+          >
             <Link
               href={{
                 pathname: "search/",
