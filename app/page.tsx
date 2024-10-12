@@ -1,9 +1,7 @@
-import Hero from "./ui/general/hero";
-import Search from "./ui/general/search";
 import { PrismaClient } from "@prisma/client";
-import { PiUserCircle } from "react-icons/pi";
 import RestaurantContainer from "./ui/general/restaurant-container";
 import Card from "./ui/general/card";
+import Header from "./ui/general/header";
 
 const prisma = new PrismaClient();
 
@@ -22,19 +20,17 @@ async function FetchRestaurants() {
   });
   return restaurants;
 }
+
 export default async function Index() {
   const restaurants = await FetchRestaurants();
   return (
-    <div>
-      <Hero>
-        <Search />
-        <PiUserCircle size={30} className="text-primary" />
-      </Hero>
+    <>
+      <Header />
       <RestaurantContainer>
         {restaurants.map((restaurant) => (
           <Card key={restaurant.id.toString()} restaurant={restaurant} />
         ))}
       </RestaurantContainer>
-    </div>
+    </>
   );
 }

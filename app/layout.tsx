@@ -1,4 +1,3 @@
-import Header from "./ui/general/header";
 import "../styles/globals.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { Metadata } from "next";
@@ -20,10 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className=" m-0 p-0">
         <AuthContext>
-          <div className="max-w-[900px] min-h-[100vh] mx-auto">
-            <Header />
-            {children}
-          </div>
+          <div className="max-w-[900px] min-h-[100vh] mx-auto">{children}</div>
         </AuthContext>
       </body>
     </html>
