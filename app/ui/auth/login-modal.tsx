@@ -1,51 +1,64 @@
 "use client";
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import Button from "../general/button";
 import SigninForm from "./signin-form";
 import SignupForm from "./signup-form";
+import { PiUserCircle } from "react-icons/pi";
+import { Grid } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: 550,
-  width: 400,
-  bgcolor: "#F87171",
+  bgcolor: "#F5F6F8",
   boxShadow: 24,
   p: 4,
 };
 
 export interface InputProps {
-  inputs: { name: string, city: string, email: string, phone: string, password: string };
+  inputs: {
+    name: string;
+    city: string;
+    email: string;
+    phone: string;
+    password: string;
+  };
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClose: () => void;
 }
-export default function LoginModal({ isSignin }: { isSignin: boolean }) {
+
+export default function LoginModal() {
+  const [isSignin, setIsSignin] = useState(false);
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [inputs, setInputs] = useState({ name: "", city: "", email: "", phone: "", password: "" });
+  const [inputs, setInputs] = useState({
+    name: "",
+    city: "",
+    email: "",
+    phone: "",
+    password: "",
+  });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({
       ...inputs,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const props = {
     inputs,
     handleChange,
-    handleClose
-  }
+    handleClose,
+  };
 
   return (
     <div>
-      <Button text={isSignin ? 'sign in' : 'sign up'} onClick={handleOpen} />
+      <PiUserCircle size={30} className="text-primary" onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
@@ -53,7 +66,37 @@ export default function LoginModal({ isSignin }: { isSignin: boolean }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          {isSignin ? <SigninForm props={props} /> : <SignupForm props={props} />}
+          <Grid container>
+            <Grid size={{ xs: 2, md: 6 }}>
+              {isSignin ? (
+                <>
+                  <SigninForm props={props} />
+                  <p className="text-center">
+                    do not have an account?
+                    <button
+                      className="bg-secondary outline-0 border-0 underline"
+                      onClick={() => setIsSignin(false)}
+                    >
+                      make one
+                    </button>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <SignupForm props={props} />
+                  <p className="text-center">
+                    have an account?
+                    <button
+                      className="bg-secondary outline-0 border-0 underline"
+                      onClick={() => setIsSignin(true)}
+                    >
+                      sign in
+                    </button>
+                  </p>
+                </>
+              )}
+            </Grid>
+          </Grid>
         </Box>
       </Modal>
     </div>
