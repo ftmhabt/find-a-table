@@ -15,6 +15,8 @@ const style = {
   bgcolor: "#F5F6F8",
   boxShadow: 24,
   p: 4,
+  borderRadius: 4,
+  outline: 0,
 };
 
 export interface InputProps {
@@ -72,7 +74,7 @@ export default function LoginModal() {
                 <>
                   <SigninForm props={props} />
                   <p className="text-center">
-                    do not have an account?
+                    do not have an account?{" "}
                     <button
                       className="bg-secondary outline-0 border-0 underline"
                       onClick={() => setIsSignin(false)}
@@ -85,7 +87,7 @@ export default function LoginModal() {
                 <>
                   <SignupForm props={props} />
                   <p className="text-center">
-                    have an account?
+                    have an account?{" "}
                     <button
                       className="bg-secondary outline-0 border-0 underline"
                       onClick={() => setIsSignin(true)}

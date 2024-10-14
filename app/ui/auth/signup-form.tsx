@@ -35,53 +35,55 @@ export default function SignupForm({ props }: { props: InputProps }) {
         <>
           <div>welcome</div>
           <div>register</div>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="name"
-            value={inputs.name}
-            onChange={(e) => handleChange(e)}
-          />
-          <input
-            type="text"
-            name="city"
-            id="city"
-            placeholder="city"
-            value={inputs.city}
-            onChange={(e) => handleChange(e)}
-          />
-          <input
-            type="text"
-            name="phone"
-            id="phone"
-            placeholder="phone"
-            value={inputs.phone}
-            onChange={(e) => handleChange(e)}
-          />
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email"
-            value={inputs.email}
-            onChange={(e) => handleChange(e)}
-          />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
-            value={inputs.password}
-            onChange={(e) => handleChange(e)}
-          />
-          <button
-            disabled={disabled}
-            className="bg-primary text-white disabled:text-secondary"
-            onClick={() => signup(inputs, handleClose)}
-          >
-            submit
-          </button>
+          <form className="flex flex-col gap-4 *:w-60 *:rounded-md *:p-2">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="name"
+              value={inputs.name}
+              onChange={(e) => handleChange(e)}
+            />
+            <input
+              type="text"
+              name="city"
+              id="city"
+              placeholder="city"
+              value={inputs.city}
+              onChange={(e) => handleChange(e)}
+            />
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="phone"
+              value={inputs.phone}
+              onChange={(e) => handleChange(e)}
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="email"
+              value={inputs.email}
+              onChange={(e) => handleChange(e)}
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              value={inputs.password}
+              onChange={(e) => handleChange(e)}
+            />
+            <button
+              disabled={disabled}
+              className="bg-primary text-white disabled:text-secondary"
+              onClick={() => signup(inputs, handleClose)}
+            >
+              Sign Up
+            </button>
+          </form>
           <h1>{error ? error : ""}</h1>
         </>
       )}

@@ -28,34 +28,36 @@ export default function SigninForm({ props }: { props: InputProps }) {
         <>
           <div>welcome</div>
           <div>sign in</div>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email"
-            value={inputs.email}
-            onChange={(e) => handleChange(e)}
-          />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
-            value={inputs.password}
-            onChange={(e) => handleChange(e)}
-          />
-          <button
-            disabled={disabled}
-            className="bg-primary text-white disabled:text-secondary"
-            onClick={() =>
-              signin(
-                { email: inputs.email, password: inputs.password },
-                handleClose
-              )
-            }
-          >
-            submit
-          </button>
+          <form className="flex flex-col gap-4 *:w-60 *:rounded-md *:p-2">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="email"
+              value={inputs.email}
+              onChange={(e) => handleChange(e)}
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              value={inputs.password}
+              onChange={(e) => handleChange(e)}
+            />
+            <button
+              disabled={disabled}
+              className="bg-primary text-white disabled:text-secondary"
+              onClick={() =>
+                signin(
+                  { email: inputs.email, password: inputs.password },
+                  handleClose
+                )
+              }
+            >
+              Sign In
+            </button>
+          </form>
           <h1>{error ? error : ""}</h1>
         </>
       )}

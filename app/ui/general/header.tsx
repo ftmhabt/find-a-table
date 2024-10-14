@@ -5,6 +5,7 @@ import Search from "./search";
 import { AuthorizationContext } from "../../context/AuthContext";
 import useAuth from "../../../hooks/useAuth";
 import LoginModal from "../auth/login-modal";
+import { IoMdLogOut } from "react-icons/io";
 
 export default function Header() {
   const { data, loading } = useContext(AuthorizationContext);
@@ -17,7 +18,9 @@ export default function Header() {
       {loading ? (
         <></>
       ) : (
-        <>{data ? <button onClick={signout}>logout</button> : <LoginModal />}</>
+        <>
+          {data ? <IoMdLogOut onClick={signout} size={25} /> : <LoginModal />}
+        </>
       )}
     </header>
   );
