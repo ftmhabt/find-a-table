@@ -6,7 +6,7 @@ export default async function RestaurantContainer({
   children: ReactNode;
 }) {
   return (
-    <div className="flex flex-wrap gap-6 justify-evenly p-6 xsm:grid xsm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+    <div className="max-w-[900px] mx-auto flex flex-wrap gap-6 justify-evenly p-6 xsm:grid xsm:grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
       {children}
     </div>
   );

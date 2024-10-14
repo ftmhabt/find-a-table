@@ -30,8 +30,8 @@ export default async function Reserve({
   const restaurant = await fetchRestaurantBySlug(params.slug);
 
   return (
-    <div className="max-w-[500px] mx-auto flex flex-col gap-4 p-4">
-      <p>youre almost done</p>
+    <div className="max-w-[500px] mx-auto flex flex-col gap-4 p-6">
+      <p>you&apos;re almost done!</p>
       <ReservationInfo
         image={restaurant.main_image}
         name={restaurant.name}

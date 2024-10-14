@@ -1,9 +1,8 @@
 import { PrismaClient, Review } from "@prisma/client";
-import Hero from "../../ui/general/hero";
 import ReserveCard from "../../ui/restaurant/reserve-card";
 import RestaurantDetailsCard from "../../ui/restaurant/restaurant-card";
-import { error } from "console";
 import { notFound } from "next/navigation";
+import RestaurantBar from "../../ui/restaurant/restaurant-bar";
 
 const prisma = new PrismaClient();
 
@@ -50,12 +49,15 @@ export default async function restaurantDatails({
   const restaurant = await fetchRestaurantBySlug(params.slug);
   return (
     <div>
-      <RestaurantDetailsCard restaurant={restaurant} slug={params.slug} />
-      <ReserveCard
-        open_time={restaurant.open_time}
-        close_time={restaurant.close_time}
-        slug={params.slug}
-      />
+      <RestaurantBar slug={params.slug} />
+      <div className="lg:flex max-w-[900px] mx-auto">
+        <RestaurantDetailsCard restaurant={restaurant} slug={params.slug} />
+        <ReserveCard
+          open_time={restaurant.open_time}
+          close_time={restaurant.close_time}
+          slug={params.slug}
+        />
+      </div>
     </div>
   );
 }

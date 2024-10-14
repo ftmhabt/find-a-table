@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className=" m-0 p-0 text-primary">
         <AuthContext>
-          <div className="max-w-[900px] min-h-[100vh] mx-auto">{children}</div>
+          <div className="min-h-[100vh]">{children}</div>
         </AuthContext>
       </body>
     </html>

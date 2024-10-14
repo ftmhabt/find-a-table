@@ -16,12 +16,12 @@ export default function ReservationInfo({
   partySize: number;
 }) {
   return (
-    <div className="flex gap-4 p-4 border border-zinc-800">
+    <div className="flex flex-col gap-4 bg-secondary">
       <Image
         className="object-cover"
         src={image}
-        width={100}
-        height={80}
+        width={300}
+        height={180}
         alt="restaurant photo"
         unoptimized={true}
       />

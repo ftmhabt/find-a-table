@@ -26,12 +26,13 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
   };
 
   return (
-    <div className="shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
+    <div className="shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] lg:hover:scale-[1.01] lg:transition-transform">
       <Link href={`restaurant/${restaurant.slug}`}>
         <Image
           src={restaurant.main_image}
           width={270}
           height={120}
+          style={{ objectFit: "cover", height: "120px" }}
           alt={restaurant.name}
         />
         <div className="flex flex-col gap-2 p-2">
@@ -61,7 +62,6 @@ export default function Card({ restaurant }: { restaurant: RestaurantType }) {
               <Price price={restaurant.price} />
             </div>
           </div>
-          <div>booked 3 times today</div>
         </div>
       </Link>
     </div>

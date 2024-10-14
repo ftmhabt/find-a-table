@@ -1,11 +1,15 @@
-import spinner from '../icons/spinner.png'
-import Image from 'next/image'
-
+import { CircularProgress } from "@mui/material";
+import Header from "../ui/restaurant/header";
 
 export default function loading() {
   return (
-    <div className="flex items-center justify-center h-[80vh]">
-      <Image src={spinner} alt='loading' />
-    </div>
-  )
+    <>
+      <Header>
+        <CircularProgress color="inherit" size={24} />
+      </Header>
+      <div className="flex items-center justify-center h-96">
+        <CircularProgress color="inherit" size={24} />
+      </div>
+    </>
+  );
 }

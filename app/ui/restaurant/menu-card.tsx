@@ -11,10 +11,9 @@ export default function MenuCard({
   slug: string;
 }) {
   return (
-    <div className="max-w-[823px] bg-slate-200 -mt-10 ml-10">
+    <div>
       <RestaurantBar slug={slug} />
-      <div className="p-4 flex flex-col gap-4">
-        <h1 className="text-2xl">Menu</h1>
+      <div className="p-4 flex flex-col gap-4  max-w-[900px] mx-auto">
         {menu.length > 0 ? (
           menu.map((item) => (
             <DishCard

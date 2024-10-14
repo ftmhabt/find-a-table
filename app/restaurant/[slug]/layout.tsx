@@ -1,6 +1,8 @@
 import React from "react";
-import Hero from "../../ui/general/hero";
 import { Metadata } from "next";
+import Header from "../../ui/restaurant/header";
+import { MdTableBar } from "react-icons/md";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "restaurant",
@@ -19,9 +21,13 @@ export default function RestaurantLayout({
   }
   return (
     <>
-      <Hero>
-        <h1 className="capitalize text-2xl px-4">{renderName(params.slug)}</h1>
-      </Hero>
+      <Header>
+        <h1 className="capitalize text-xl">{renderName(params.slug)}</h1>
+        <Link href={"/"} className="flex gap-2 font-bold">
+          <MdTableBar size={25} />
+          <p className="hidden lg:block">find a table</p>
+        </Link>
+      </Header>
       {children}
     </>
   );

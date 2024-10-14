@@ -2,6 +2,7 @@
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useReservation from "../../../hooks/useReservation";
 import { useEffect, useState } from "react";
+import { CircularProgress } from "@mui/material";
 
 type FormValues = {
   bookerName: string;
@@ -45,7 +46,7 @@ export default function ReservationForm({
   };
   return !isBooked ? (
     <form
-      className="border border-zinc-800 flex flex-col gap-2 p-4 *:border *:border-red-400 *:outline-0"
+      className="bg-secondary flex flex-col gap-3 p-4 *:outline-0 *:p-3 *:rounded-lg"
       onSubmit={handleSubmit(async (data) => await onsubmit(data))}
     >
       <input
@@ -54,33 +55,39 @@ export default function ReservationForm({
         })}
         placeholder="Full Name"
       />
-      <p>{errors.bookerName?.message?.toString()}</p>
+      {errors.bookerName && <p>{errors.bookerName?.message?.toString()}</p>}
       <input
         {...register("bookerEmail", {
           required: { value: true, message: "email can not be empty" },
         })}
         placeholder="Email"
       />
-      <p>{errors.bookerEmail?.message?.toString()}</p>
+      {errors.bookerEmail && <p>{errors.bookerEmail?.message?.toString()}</p>}
       <input
         {...register("bookerPhone", {
           required: { value: true, message: "phone number can not be empty" },
         })}
         placeholder="Phone Number"
       />
-      <p>{errors.bookerPhone?.message?.toString()}</p>
+      {errors.bookerPhone && <p>{errors.bookerPhone?.message?.toString()}</p>}
       <input
         {...register("bookerOccasion")}
         placeholder="Occasion (Optional)"
       />
       <input {...register("bookerRequest")} placeholder="Request (Optional)" />
-      <input
+      <button
+        className="bg-primary text-white disabled:text-secondary"
         type="submit"
-        value={loading ? "wait" : "complete reservation"}
         disabled={!isDirty || !isValid || loading}
-      />
+      >
+        {loading ? (
+          <CircularProgress color="inherit" size={24} />
+        ) : (
+          "complete reservation"
+        )}
+      </button>
     </form>
   ) : (
-    <div>successfully booked</div>
+    <div>successfully booked!</div>
   );
 }
