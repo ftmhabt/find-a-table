@@ -68,37 +68,33 @@ export default function LoginModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Grid container>
-            <Grid size={{ xs: 2, md: 6 }}>
-              {isSignin ? (
-                <>
-                  <SigninForm props={props} />
-                  <p className="text-center">
-                    do not have an account?{" "}
-                    <button
-                      className="bg-secondary outline-0 border-0 underline"
-                      onClick={() => setIsSignin(false)}
-                    >
-                      make one
-                    </button>
-                  </p>
-                </>
-              ) : (
-                <>
-                  <SignupForm props={props} />
-                  <p className="text-center">
-                    have an account?{" "}
-                    <button
-                      className="bg-secondary outline-0 border-0 underline"
-                      onClick={() => setIsSignin(true)}
-                    >
-                      sign in
-                    </button>
-                  </p>
-                </>
-              )}
-            </Grid>
-          </Grid>
+          {isSignin ? (
+            <>
+              <SigninForm props={props} />
+              <p className="text-center">
+                do not have an account?{" "}
+                <button
+                  className="bg-secondary outline-0 border-0 underline"
+                  onClick={() => setIsSignin(false)}
+                >
+                  make one!
+                </button>
+              </p>
+            </>
+          ) : (
+            <>
+              <SignupForm props={props} />
+              <p className="text-center">
+                have an account?{" "}
+                <button
+                  className="bg-secondary outline-0 border-0 underline"
+                  onClick={() => setIsSignin(true)}
+                >
+                  sign in!
+                </button>
+              </p>
+            </>
+          )}
         </Box>
       </Modal>
     </div>
