@@ -26,6 +26,9 @@ export default async function Index() {
   return (
     <>
       <Header />
+      <h1 className="text-center pt-2">
+        only Vivaan restaurant has available tables for now
+      </h1>
       <RestaurantContainer>
         {restaurants.map((restaurant) => (
           <Card key={restaurant.id.toString()} restaurant={restaurant} />
