@@ -58,13 +58,16 @@ export default function ReserveCard({
             {data.map((item) =>
               item.available ? (
                 <Link
+                  className="hover:bg-primary hover:text-white"
                   key={item.time}
                   href={`/reserve/${slug}?day=${day}&time=${item.time}&partySize=${partySize}`}
                 >
                   {convertToDisplayTime(item.time as Time)}
                 </Link>
               ) : (
-                <div key={item.time}>unavailable</div>
+                <div className="cursor-not-allowed" key={item.time}>
+                  unavailable
+                </div>
               )
             )}
           </div>
