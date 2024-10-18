@@ -30,7 +30,7 @@ export default function useReservation() {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/restaurant/${slug}/reserve`,
+        `https://find-a-table.vercel.app/api/restaurant/${slug}/reserve`,
         { bookerName, bookerEmail, bookerPhone, bookerOccasion, bookerRequest },
         {
           params: {

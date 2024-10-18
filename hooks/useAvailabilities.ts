@@ -23,7 +23,7 @@ export default function useAvailabilities() {
 
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/restaurant/${slug}/availability`,
+        `https://find-a-table.vercel.app/api/restaurant/${slug}/availability`,
         {
           params: {
             day,
