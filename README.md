@@ -50,7 +50,7 @@ Detailed usage instructions and features can be found directly on the website.
 
 <span style="color: #7B7B7B;">Screenshots</span>
 
-!(https://github.com/ftmhabt/find-a-table/blob/main/ScreenShot%20Tool%20-20241014134503%20(1).png)
+!(https://github.com/ftmhabt/find-a-table/blob/main/ScreenShot%20Tool%20-20241014134503%20(1).png?raw=true)
 
 Feel free to reach out if you have any questions or feedback! 🌐
 
