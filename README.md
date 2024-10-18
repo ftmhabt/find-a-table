@@ -32,25 +32,25 @@ To install and run the project locally, follow these steps:
    ```bash
    git clone https://github.com/your-username/find-a-table.git
    cd find-a-table
-   
-Install the dependencies:
+
+2. Install the dependencies:
 
    ```bash
    npm install
 
-Run the development server:
+3. Run the development server:
 
    ```bash
    npm run dev
 
-Open your browser and go to http://localhost:3000 to see the app in action!
+4. Open your browser and go to http://localhost:3000 to see the app in action!
 
 <span style="color: #7B7B7B;">Usage</span>
 Detailed usage instructions and features can be found directly on the website.
 
 <span style="color: #7B7B7B;">Screenshots</span>
 
-
+!(https://github.com/ftmhabt/find-a-table/blob/main/ScreenShot%20Tool%20-20241014134503%20(1).png)
 
 Feel free to reach out if you have any questions or feedback! 🌐
 
