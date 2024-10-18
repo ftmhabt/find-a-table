@@ -32,16 +32,17 @@ To install and run the project locally, follow these steps:
    ```bash
    git clone https://github.com/your-username/find-a-table.git
    cd find-a-table
+   
 Install the dependencies:
 
-bash
-Copy code
-npm install
+   ```bash
+   npm install
+
 Run the development server:
 
-bash
-Copy code
-npm run dev
+   ```bash
+   npm run dev
+
 Open your browser and go to http://localhost:3000 to see the app in action!
 
 <span style="color: #7B7B7B;">Usage</span>
@@ -49,17 +50,7 @@ Detailed usage instructions and features can be found directly on the website.
 
 <span style="color: #7B7B7B;">Screenshots</span>
 
-(Add your screenshot path above)
+
 
 Feel free to reach out if you have any questions or feedback! 🌐
 
-sql
-Copy code
-
-### How to Create the File:
-1. Open your favorite text editor or IDE (like VSCode, Atom, or even Notepad).
-2. Copy the content above.
-3. Paste it into a new file.
-4. Save the file with the name `README.md`.
-
-Let me know if you need any more help!
