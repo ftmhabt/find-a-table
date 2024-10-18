@@ -3,6 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useReservation from "../../../hooks/useReservation";
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import Link from "next/link";
 
 type FormValues = {
   bookerName: string;
@@ -88,6 +89,8 @@ export default function ReservationForm({
       </button>
     </form>
   ) : (
-    <div>successfully booked!</div>
+    <div>
+      successfully booked!<Link href={"/"}>go back to homepage</Link>
+    </div>
   );
 }
