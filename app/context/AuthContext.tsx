@@ -51,14 +51,11 @@ export default function AuthContext({
         });
       }
 
-      const response = await axios.get(
-        "https://find-a-table.vercel.app/api/auth/me",
-        {
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        }
-      );
+      const response = await axios.get(`/api/auth/me`, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
 
       axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 
@@ -70,7 +67,7 @@ export default function AuthContext({
     } catch (error: any) {
       setAuthState({
         data: null,
-        error: error.response.data.errorMessage,
+        error: error.message,
         loading: false,
       });
     }

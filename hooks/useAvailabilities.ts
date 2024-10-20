@@ -22,16 +22,13 @@ export default function useAvailabilities() {
     setLoading(true);
 
     try {
-      const response = await axios.get(
-        `https://find-a-table.vercel.app/api/restaurant/${slug}/availability`,
-        {
-          params: {
-            day,
-            time,
-            partySize,
-          },
-        }
-      );
+      const response = await axios.get(`/api/restaurant/${slug}/availability`, {
+        params: {
+          day,
+          time,
+          partySize,
+        },
+      });
       setLoading(false);
       setData(response.data);
     } catch (error: any) {
