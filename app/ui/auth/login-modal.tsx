@@ -33,11 +33,13 @@ export default function LoginModal({
   isSignin,
   setSignin,
   setSignup,
+  handleClose,
 }: {
   isOpen: boolean;
   isSignin: boolean;
   setSignin: () => void;
   setSignup: () => void;
+  handleClose: () => void;
 }) {
   const [inputs, setInputs] = useState({
     name: "",
@@ -62,6 +64,7 @@ export default function LoginModal({
     <div>
       <Modal
         open={isOpen}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

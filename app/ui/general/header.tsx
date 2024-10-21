@@ -16,6 +16,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <header
       className={`flex gap-2 min-h-20 h-full py-4 px-6 bg-secondary text-primary items-center justify-evenly lg:justify-center lg:gap-5`}
@@ -37,6 +38,7 @@ export default function Header() {
               <LoginModal
                 isOpen={open}
                 isSignin={isSignin}
+                handleClose={handleClose}
                 setSignin={() => setIsSignin(true)}
                 setSignup={() => setIsSignin(false)}
               />
