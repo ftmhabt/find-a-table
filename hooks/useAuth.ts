@@ -6,10 +6,13 @@ import { deleteCookie } from "cookies-next";
 const useAuth = () => {
   const { setAuthState } = useContext(AuthorizationContext);
 
-  const signin = async (
-    { email, password }: { email: string; password: string },
-    handleClose: () => void
-  ) => {
+  const signin = async ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
     setAuthState({
       data: null,
       error: null,
@@ -17,20 +20,16 @@ const useAuth = () => {
     });
 
     try {
-      const response = await axios.post(
-        "https://find-a-table.vercel.app/api/auth/signin",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("/api/auth/signin", {
+        email,
+        password,
+      });
 
       setAuthState({
         data: response.data,
         error: null,
         loading: false,
       });
-      handleClose();
     } catch (error: any) {
       setAuthState({
         data: null,
@@ -40,22 +39,19 @@ const useAuth = () => {
     }
   };
 
-  const signup = async (
-    {
-      email,
-      password,
-      name,
-      phone,
-      city,
-    }: {
-      email: string;
-      password: string;
-      name: string;
-      phone: string;
-      city: string;
-    },
-    handleClose: () => void
-  ) => {
+  const signup = async ({
+    email,
+    password,
+    name,
+    phone,
+    city,
+  }: {
+    email: string;
+    password: string;
+    name: string;
+    phone: string;
+    city: string;
+  }) => {
     setAuthState({
       data: null,
       error: null,
@@ -63,23 +59,19 @@ const useAuth = () => {
     });
 
     try {
-      const response = await axios.post(
-        "https://find-a-table.vercel.app/api/auth/signup",
-        {
-          email,
-          password,
-          name,
-          phone,
-          city,
-        }
-      );
+      const response = await axios.post("/api/auth/signup", {
+        email,
+        password,
+        name,
+        phone,
+        city,
+      });
 
       setAuthState({
         data: response.data,
         error: null,
         loading: false,
       });
-      handleClose();
     } catch (error: any) {
       setAuthState({
         data: null,

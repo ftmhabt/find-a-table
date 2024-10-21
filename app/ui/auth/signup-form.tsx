@@ -7,7 +7,7 @@ import spinner from "../../icons/spinner.png";
 import Image from "next/image";
 
 export default function SignupForm({ props }: { props: InputProps }) {
-  const { inputs, handleChange, handleClose } = props;
+  const { inputs, handleChange } = props;
   const [disabled, setDisabled] = useState(true);
   const { signup } = useAuth();
   const { data, error, loading, setAuthState } =
@@ -79,7 +79,10 @@ export default function SignupForm({ props }: { props: InputProps }) {
             <button
               disabled={disabled}
               className="bg-primary text-white disabled:text-secondary"
-              onClick={() => signup(inputs, handleClose)}
+              onClick={(e) => {
+                e.preventDefault();
+                signup(inputs);
+              }}
             >
               Sign Up
             </button>

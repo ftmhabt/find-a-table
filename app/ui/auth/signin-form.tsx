@@ -7,7 +7,7 @@ import spinner from "../../icons/spinner.png";
 import Image from "next/image";
 
 export default function SigninForm({ props }: { props: InputProps }) {
-  const { inputs, handleChange, handleClose } = props;
+  const { inputs, handleChange } = props;
   const [disabled, setDisabled] = useState(true);
   const { signin } = useAuth();
   const { data, error, loading, setAuthState } =
@@ -49,10 +49,7 @@ export default function SigninForm({ props }: { props: InputProps }) {
               disabled={disabled}
               className="bg-primary text-white disabled:text-secondary"
               onClick={() =>
-                signin(
-                  { email: inputs.email, password: inputs.password },
-                  handleClose
-                )
+                signin({ email: inputs.email, password: inputs.password })
               }
             >
               Sign In

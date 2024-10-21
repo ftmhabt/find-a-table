@@ -4,8 +4,6 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import SigninForm from "./signin-form";
 import SignupForm from "./signup-form";
-import { PiUserCircle } from "react-icons/pi";
-import { Grid } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
@@ -28,16 +26,19 @@ export interface InputProps {
     password: string;
   };
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleClose: () => void;
 }
 
-export default function LoginModal() {
-  const [isSignin, setIsSignin] = useState(false);
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export default function LoginModal({
+  isOpen,
+  isSignin,
+  setSignin,
+  setSignup,
+}: {
+  isOpen: boolean;
+  isSignin: boolean;
+  setSignin: () => void;
+  setSignup: () => void;
+}) {
   const [inputs, setInputs] = useState({
     name: "",
     city: "",
@@ -55,15 +56,12 @@ export default function LoginModal() {
   const props = {
     inputs,
     handleChange,
-    handleClose,
   };
 
   return (
     <div>
-      <PiUserCircle size={30} className="text-primary" onClick={handleOpen} />
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={isOpen}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -75,7 +73,7 @@ export default function LoginModal() {
                 do not have an account?{" "}
                 <button
                   className="bg-secondary outline-0 border-0 underline"
-                  onClick={() => setIsSignin(false)}
+                  onClick={setSignup}
                 >
                   make one!
                 </button>
@@ -88,7 +86,7 @@ export default function LoginModal() {
                 have an account?{" "}
                 <button
                   className="bg-secondary outline-0 border-0 underline"
-                  onClick={() => setIsSignin(true)}
+                  onClick={setSignin}
                 >
                   sign in!
                 </button>
