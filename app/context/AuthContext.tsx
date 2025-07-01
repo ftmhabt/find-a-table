@@ -84,7 +84,7 @@ export default function AuthContext({
         setAuthState,
       }}
     >
-      {children}
+      {authState.error ? authState.error : children}
     </AuthorizationContext.Provider>
   );
 }
