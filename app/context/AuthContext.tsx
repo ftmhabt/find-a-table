@@ -49,6 +49,7 @@ export default function AuthContext({
           error: null,
           loading: false,
         });
+        return;
       }
 
       const response = await axios.get(`/api/auth/me`, {
