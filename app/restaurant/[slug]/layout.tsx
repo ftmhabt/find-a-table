@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
 import { Metadata } from "next";
 import Header from "../../ui/restaurant/header";
 import { MdTableBar } from "react-icons/md";
 import Link from "next/link";
-import { AuthorizationContext } from "../../context/AuthContext";
+import Error from "../../ui/error";
 
 export const metadata: Metadata = {
   title: "restaurant",
@@ -15,7 +14,6 @@ export default function RestaurantLayout({
   children: React.ReactNode;
   params: { slug: string };
 }) {
-  const { error } = useContext(AuthorizationContext);
   function renderName(name: string) {
     const nameArray = name.split("-");
     nameArray[nameArray.length - 1] = `(${nameArray[nameArray.length - 1]})`;
@@ -30,7 +28,8 @@ export default function RestaurantLayout({
           <p className="hidden lg:block">find a table</p>
         </Link>
       </Header>
-      {error ? error : children}
+      {children}
+      <Error />
     </>
   );
 }
