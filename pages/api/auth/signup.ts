@@ -38,10 +38,10 @@ export default async function signup(
         }),
         errorMessage: "City is invalid",
       },
-      {
-        valid: validator.isStrongPassword(password),
-        errorMessage: "Password is not strong",
-      },
+      // {
+      //   valid: validator.isStrongPassword(password),
+      //   errorMessage: "Password is not strong",
+      // },
     ];
 
     validationSchema.forEach((check) => {
